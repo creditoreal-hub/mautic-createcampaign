@@ -1,0 +1,68 @@
+export interface CampaignData {
+  name: string;
+  segmentName: string;
+  roles: string[];
+  filters: {
+    condominio: string;
+    cidade: string;
+    bairro: string;
+    estado: string;
+  };
+  mauticSettings: {
+    campaignDescription: string;
+    segmentDescription: string;
+    isPublished: boolean;
+  };
+}
+
+export interface IntegrationPayload {
+  campaign: CampaignData;
+  timestamp: string;
+  webhook_url: string;
+  action: 'create_mautic_campaign_and_segment';
+  expectedUsers?: number;
+  webhookResponse?: any;
+}
+
+export const AVAILABLE_ROLES = [
+  'Assessor',
+  'Condômino',
+  'Conselheiro Fiscal',
+  'Conselheiro Suplente',
+  'Corretor de Vendas',
+  'Gestor',
+  'Locatário',
+  'Proprietário',
+  'Síndico',
+  'SubSíndico'
+] as const;
+
+export const BRAZILIAN_STATES = [
+  { code: 'AC', name: 'Acre' },
+  { code: 'AL', name: 'Alagoas' },
+  { code: 'AP', name: 'Amapá' },
+  { code: 'AM', name: 'Amazonas' },
+  { code: 'BA', name: 'Bahia' },
+  { code: 'CE', name: 'Ceará' },
+  { code: 'DF', name: 'Distrito Federal' },
+  { code: 'ES', name: 'Espírito Santo' },
+  { code: 'GO', name: 'Goiás' },
+  { code: 'MA', name: 'Maranhão' },
+  { code: 'MT', name: 'Mato Grosso' },
+  { code: 'MS', name: 'Mato Grosso do Sul' },
+  { code: 'MG', name: 'Minas Gerais' },
+  { code: 'PA', name: 'Pará' },
+  { code: 'PB', name: 'Paraíba' },
+  { code: 'PR', name: 'Paraná' },
+  { code: 'PE', name: 'Pernambuco' },
+  { code: 'PI', name: 'Piauí' },
+  { code: 'RJ', name: 'Rio de Janeiro' },
+  { code: 'RN', name: 'Rio Grande do Norte' },
+  { code: 'RS', name: 'Rio Grande do Sul' },
+  { code: 'RO', name: 'Rondônia' },
+  { code: 'RR', name: 'Roraima' },
+  { code: 'SC', name: 'Santa Catarina' },
+  { code: 'SP', name: 'São Paulo' },
+  { code: 'SE', name: 'Sergipe' },
+  { code: 'TO', name: 'Tocantins' }
+];
